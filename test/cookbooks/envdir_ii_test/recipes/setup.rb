@@ -1,6 +1,6 @@
 #
 # Cookbook:: envdir_ii_test
-# Recipe:: default
+# Recipe:: setup
 #
 # The MIT License (MIT)
 #
@@ -24,16 +24,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-include_recipe 'envdir_ii_test::setup'
-
-envdir_ii_envdir '/env/default' do
-  values(
-    'AAA' => {
-      value: 'aaa',
-    },
-    'SSS' => {
-      value: 'sss',
-      sensitive: true,
-    }
-  )
+directory '/env' do
+  owner 'root'
+  group 'root'
 end

@@ -1,6 +1,6 @@
 #
 # Cookbook:: envdir_ii_test
-# Recipe:: default
+# Recipe:: uid-gid
 #
 # The MIT License (MIT)
 #
@@ -26,7 +26,18 @@
 
 include_recipe 'envdir_ii_test::setup'
 
+group 'testgroup' do
+  gid 9999
+end
+
+user 'testuser' do
+  uid 8888
+  gid 'testgroup'
+end
+
 envdir_ii_envdir '/env/default' do
+  owner 'testuser'
+  group 'testgroup'
   values(
     'AAA' => {
       value: 'aaa',

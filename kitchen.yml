@@ -26,11 +26,47 @@ platforms:
       image: dokken/centos-8
       pid_one_command: /usr/lib/systemd/systemd
 
+  - name: amazonlinux-1
+    driver:
+      image: dokken/amazonlinux
+      #pid_one_command: /usr/lib/systemd/systemd
+
+  - name: amazonlinux-2
+    driver:
+      image: dokken/amazonlinux-2
+      pid_one_command: /usr/lib/systemd/systemd
+
 suites:
   - name: default
     run_list:
       - recipe[envdir_ii::default]
+      - recipe[envdir_ii_test::default]
     verifier:
       inspec_tests:
         - test/integration/default
+    attributes:
+  - name: cleanup
+    run_list:
+      - recipe[envdir_ii::default]
+      - recipe[envdir_ii_test::cleanup]
+      - recipe[envdir_ii_test::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    attributes:
+  - name: uidgid
+    run_list:
+      - recipe[envdir_ii::default]
+      - recipe[envdir_ii_test::uid-gid]
+    verifier:
+      inspec_tests:
+        - test/integration/uid-gid
+    attributes:
+  - name: notification
+    run_list:
+      - recipe[envdir_ii::default]
+      - recipe[envdir_ii_test::notification]
+    verifier:
+      inspec_tests:
+        - test/integration/notification
     attributes:

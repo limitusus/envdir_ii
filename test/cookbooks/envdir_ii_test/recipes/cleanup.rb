@@ -1,6 +1,6 @@
 #
 # Cookbook:: envdir_ii_test
-# Recipe:: default
+# Recipe:: cleanup
 #
 # The MIT License (MIT)
 #
@@ -26,14 +26,13 @@
 
 include_recipe 'envdir_ii_test::setup'
 
-envdir_ii_envdir '/env/default' do
-  values(
-    'AAA' => {
-      value: 'aaa',
-    },
-    'SSS' => {
-      value: 'sss',
-      sensitive: true,
-    }
-  )
+directory '/env/default' do
+  owner 'root'
+  group 'root'
+end
+
+file '/env/default/DDD' do
+  owner 'root'
+  group 'root'
+  content 'this file should be cleaned up by envdir resource'
 end
