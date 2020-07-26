@@ -10,5 +10,5 @@ issues_url 'https://github.com/limitusus/envdir_ii/issues'
 source_url 'https://github.com/limitusus/envdir_ii'
 
 supports 'ubuntu', '>= 16.04'
-supports 'centos', '>= 7'
+supports 'centos', '>= 7.0'
 supports 'amazon'
