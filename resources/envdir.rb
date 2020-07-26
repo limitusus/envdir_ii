@@ -39,7 +39,7 @@ action :create do
     end
   end
 
-  new_resource.values.each do |e, v|
+  new_resource.values.each do |e, v| # rubocop:disable Style/HashEachMethods
     file "#{new_resource.path}/#{e}" do
       owner new_resource.owner
       group new_resource.group
