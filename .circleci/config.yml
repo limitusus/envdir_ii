@@ -13,6 +13,8 @@ workflows:
           suite: uidgid
       - kitchen/dokken-single:
           suite: notification
+      - kitchen/dokken-single:
+          suite: delete
   nightly:
     triggers:
       - schedule:
@@ -30,3 +32,5 @@ workflows:
           suite: uidgid
       - kitchen/dokken-single:
           suite: notification
+      - kitchen/dokken-single:
+          suite: delete

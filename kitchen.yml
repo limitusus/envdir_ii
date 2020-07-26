@@ -72,3 +72,11 @@ suites:
       inspec_tests:
         - test/integration/notification
     attributes:
+  - name: delete
+    run_list:
+      - recipe[envdir_ii::default]
+      - recipe[envdir_ii_test::delete]
+    verifier:
+      inspec_tests:
+        - test/integration/delete
+    attributes:
