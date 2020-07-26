@@ -1,0 +1,14 @@
+version: 2.1
+orbs:
+  kitchen: sous-chefs/kitchen@2.1.1
+workflows:
+  test:
+    jobs:
+      - kitchen/dokken-single:
+          suite: default
+      - kitchen/dokken-single:
+          suite: cleanup
+      - kitchen/dokken-single:
+          suite: uidgid
+      - kitchen/dokken-single:
+          suite: notification
