@@ -33,5 +33,5 @@ Any files in the directory not defined in `values` will be removed.
 - `path`: directory path managed by this resource. if omitted, the resource name is used.
 - `owner`: Directory and files owner
 - `group`: Directory and files group
-- `values`: Hash of `value` and `sensitive`; `value` is the content of file, and `sensitive` sets the file read-writable only by its `owner`/`group`
+- `values`: Hash of `:value` and `:sensitive`; `:value` is the content of file, and `:sensitive` sets the file read-writable only by its `owner`/`group`
 - `action`: either `:create` or `:delete`; `:delete` action deletes the whole directory
