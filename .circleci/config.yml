@@ -1,19 +1,74 @@
 version: 2.1
-orbs:
-  kitchen: sous-chefs/kitchen@2.1.1
+
+executors:
+  ubuntu-chef:
+    machine:
+      image: ubuntu-2004:202010-01
+
+commands:
+  install_chefworkstation:
+    description: Installs Chef Workstation
+    parameters:
+      channel:
+        description: Chef Workstation channel stable or current
+        type: string
+        default: current
+    steps:
+      - run:
+          name: Install Chef
+          command: |
+            curl -L https://omnitruck.chef.io/install.sh |
+              sudo bash -s -- -c <<parameters.channel>> -P chef-workstation
+
+jobs:
+  dokken-single-cw:
+    executor: ubuntu-chef
+    parameters:
+      suite:
+        description: Test Kitchen suite name
+        type: string
+      channel:
+        description: Chef Workstation channel stable or current
+        type: string
+        default: current
+      enable-ipv6:
+        description: Optionally enable an IPv6 stack for testing
+        type: boolean
+        default: false
+    environment:
+      KITCHEN_LOCAL_YAML: kitchen.dokken.yml
+      CHEF_LICENSE: "accept-no-persist"
+    steps:
+      - checkout
+      - install_chefworkstation:
+          channel: <<parameters.channel>>
+      - when:
+          condition: << parameters.enable-ipv6 >>
+          steps:
+            - run: >
+                docker network create --driver=bridge
+                --subnet=172.18.0.0/16 --gateway=172.18.0.1
+                --subnet=2001:db8:1::/64 --ipv6 dokken
+            - run: docker network inspect dokken
+      - run:
+          command: CHEF_LICENSE="accept-no-persist" kitchen test <<parameters.suite>>
+      - store_artifacts:
+          path: .kitchen/logs
+          when: on_fail
+
 workflows:
   version: 2
   test:
     jobs:
-      - kitchen/dokken-single:
+      - dokken-single-cw:
           suite: default
-      - kitchen/dokken-single:
+      - dokken-single-cw:
           suite: cleanup
-      - kitchen/dokken-single:
+      - dokken-single-cw:
           suite: uidgid
-      - kitchen/dokken-single:
+      - dokken-single-cw:
           suite: notification
-      - kitchen/dokken-single:
+      - dokken-single-cw:
           suite: delete
   nightly:
     triggers:
@@ -24,13 +79,13 @@ workflows:
               only:
                 - master
     jobs:
-      - kitchen/dokken-single:
+      - dokken-single-cw:
           suite: default
-      - kitchen/dokken-single:
+      - dokken-single-cw:
           suite: cleanup
-      - kitchen/dokken-single:
+      - dokken-single-cw:
           suite: uidgid
-      - kitchen/dokken-single:
+      - dokken-single-cw:
           suite: notification
-      - kitchen/dokken-single:
+      - dokken-single-cw:
           suite: delete
