@@ -1,19 +1,28 @@
 version: 2.1
 orbs:
-  kitchen: sous-chefs/kitchen@2.1.1
+  kitchen: sous-chefs/kitchen@2
+executors:
+  ubuntu-chef:
+    machine:
+      image: ubuntu:20.04
 workflows:
   version: 2
   test:
     jobs:
       - kitchen/dokken-single:
+          executor: ubuntu-chef
           suite: default
       - kitchen/dokken-single:
+          executor: ubuntu-chef
           suite: cleanup
       - kitchen/dokken-single:
+          executor: ubuntu-chef
           suite: uidgid
       - kitchen/dokken-single:
+          executor: ubuntu-chef
           suite: notification
       - kitchen/dokken-single:
+          executor: ubuntu-chef
           suite: delete
   nightly:
     triggers:
@@ -25,12 +34,17 @@ workflows:
                 - master
     jobs:
       - kitchen/dokken-single:
+          executor: ubuntu-chef
           suite: default
       - kitchen/dokken-single:
+          executor: ubuntu-chef
           suite: cleanup
       - kitchen/dokken-single:
+          executor: ubuntu-chef
           suite: uidgid
       - kitchen/dokken-single:
+          executor: ubuntu-chef
           suite: notification
       - kitchen/dokken-single:
+          executor: ubuntu-chef
           suite: delete
