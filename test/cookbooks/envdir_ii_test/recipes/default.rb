@@ -34,6 +34,12 @@ envdir_ii_envdir '/env/default' do
     'SSS' => {
       value: 'sss',
       sensitive: true,
+    },
+    'INT' => {
+      value: 1,
+    },
+    'BOOL' => {
+      value: true,
     }
   )
 end
