@@ -44,7 +44,7 @@ action :create do
       owner new_resource.owner
       group new_resource.group
       action :create
-      content v[:value]
+      content v[:value].to_s
       mode v[:sensitive] ? '0o600' : '0o644'
     end
   end
