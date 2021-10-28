@@ -1,5 +1,17 @@
 # Changelog
 
+## [v1.0.0](https://github.com/limitusus/envdir_ii/tree/v1.0.0) (2021-10-28)
+
+[Full Changelog](https://github.com/limitusus/envdir_ii/compare/v0.1.2...v1.0.0)
+
+**Merged pull requests:**
+
+- Rename branch to main [\#7](https://github.com/limitusus/envdir_ii/pull/7) ([limitusus](https://github.com/limitusus))
+- Resource unified\_mode for Chef 18 [\#6](https://github.com/limitusus/envdir_ii/pull/6) ([limitusus](https://github.com/limitusus))
+- Fix ChefCorrectness/OctalModeAsString [\#5](https://github.com/limitusus/envdir_ii/pull/5) ([limitusus](https://github.com/limitusus))
+- Fix ValidationFailed error [\#4](https://github.com/limitusus/envdir_ii/pull/4) ([hkobayash](https://github.com/hkobayash))
+- Fix tests [\#3](https://github.com/limitusus/envdir_ii/pull/3) ([limitusus](https://github.com/limitusus))
+
 ## [v0.1.2](https://github.com/limitusus/envdir_ii/tree/v0.1.2) (2020-07-27)
 
 [Full Changelog](https://github.com/limitusus/envdir_ii/compare/v0.1.1...v0.1.2)
