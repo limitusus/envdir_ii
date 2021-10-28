@@ -3,7 +3,7 @@ maintainer 'Tomoya Kabe'
 maintainer_email 'limit.usus@gmail.com'
 license 'MIT'
 description 'Provides envdir resource'
-version '0.1.2'
+version '1.0.0'
 chef_version '>= 15.0'
 
 issues_url 'https://github.com/limitusus/envdir_ii/issues'
