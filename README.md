@@ -1,6 +1,6 @@
 # envdir_ii
 
-![CircleCI](https://img.shields.io/circleci/build/github/limitusus/envdir_ii/master?token=4cd3700996f9934222b4899ee5d84dfe3a2f62a7)
+![CircleCI](https://img.shields.io/circleci/build/github/limitusus/envdir_ii/main?token=4cd3700996f9934222b4899ee5d84dfe3a2f62a7)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/limitusus/envdir_ii)
 ![Chef cookbook](https://img.shields.io/cookbook/v/envdir_ii)
 

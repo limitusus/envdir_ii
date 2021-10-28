@@ -77,7 +77,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
     jobs:
       - dokken-single-cw:
           suite: default
