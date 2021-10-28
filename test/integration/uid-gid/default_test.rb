@@ -1,6 +1,6 @@
 describe directory('/env/default') do
   it { should exist }
-  its('mode') { should eq 0o755 }
+  its('mode') { should eq 0755 }
   its('owner') { should eq 'testuser' }
   its('group') { should eq 'testgroup' }
 end
@@ -10,7 +10,7 @@ describe file('/env/default/AAA') do
   its('owner') { should eq 'testuser' }
   its('group') { should eq 'testgroup' }
   its('content') { should eq 'aaa' }
-  its('mode') { should eq 0o644 }
+  its('mode') { should eq 0644 }
 end
 
 describe file('/env/default/SSS') do
@@ -18,7 +18,7 @@ describe file('/env/default/SSS') do
   its('owner') { should eq 'testuser' }
   its('group') { should eq 'testgroup' }
   its('content') { should eq 'sss' }
-  its('mode') { should eq 0o600 }
+  its('mode') { should eq 0600 }
 end
 
 describe file('/env/default/DDD') do
