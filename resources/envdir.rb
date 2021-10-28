@@ -28,7 +28,7 @@ action :create do
   directory new_resource.path do
     owner new_resource.owner
     group new_resource.group
-    mode '0o755'
+    mode '0755'
   end
 
   if @current_resource
@@ -45,7 +45,7 @@ action :create do
       group new_resource.group
       action :create
       content v[:value].to_s
-      mode v[:sensitive] ? '0o600' : '0o644'
+      mode v[:sensitive] ? '0600' : '0644'
     end
   end
 end
