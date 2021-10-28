@@ -3,6 +3,8 @@ property :owner, String, default: 'root'
 property :group, String, default: 'root'
 property :values, Hash, default: {}
 
+unified_mode true
+
 default_action :create
 
 load_current_value do |new_resource|
